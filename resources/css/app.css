@@ -1,12 +1,96 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source "../**/*.blade.php";
-@source "../**/*.js";
-@source "../**/*.vue";
-
+/* ========================
+   Custom Font Classes
+======================== */
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-bebas: "Bebas Neue", sans-serif;
+    --font-montserrat: "Montserrat", sans-serif;
+}
+
+/* ========================
+   Navbar hide animation
+======================== */
+#header.hide {
+    transform: translateY(-100%);
+}
+
+/* ========================
+   Nav link underline hover
+======================== */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: black;
+    transition: 0.3s ease;
+    transform: translateX(-50%);
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ========================
+   CTA Button shadow effect
+======================== */
+.cta-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid #fff;
+    transform: translate(8px, 8px);
+    transition: 0.3s ease;
+}
+.cta-btn:hover::after {
+    transform: translate(4px, 4px);
+    border-color: #ccc;
+}
+
+/* ========================
+   Moving BG text animations
+======================== */
+.bg-line-left {
+    animation: moveLeft 40s linear infinite;
+}
+.bg-line-right {
+    animation: moveRight 40s linear infinite;
+}
+@keyframes moveLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-40%);
+    }
+}
+@keyframes moveRight {
+    from {
+        transform: translateX(-40%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* ========================
+   Product scrollbar style
+======================== */
+.product-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+.product-scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+/* ========================
+   Banner active state
+======================== */
+.banner-item.active {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    z-index: 1 !important;
 }

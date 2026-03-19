@@ -25,7 +25,7 @@
 
         {{-- Auth Buttons --}}
         <div class="flex items-center gap-3">
-            <a href="#" class="px-5 py-2 border border-black text-black text-sm font-semibold font-montserrat tracking-wider hover:bg-black hover:text-white transition-all duration-300">
+            <a href="login" class="px-5 py-2 border border-black text-black text-sm font-semibold font-montserrat tracking-wider hover:bg-black hover:text-white transition-all duration-300">
                 Masuk
             </a>
             <a href="#" class="px-5 py-2 bg-black text-white text-sm font-semibold font-montserrat tracking-wider hover:bg-neutral-800 transition-all duration-300">

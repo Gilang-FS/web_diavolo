@@ -1,23 +1,16 @@
 @import "tailwindcss";
 
-/* ========================
-   Custom Font Classes
-======================== */
 @theme {
     --font-bebas: "Bebas Neue", sans-serif;
     --font-montserrat: "Montserrat", sans-serif;
 }
 
-/* ========================
-   Navbar hide animation
-======================== */
+/* Navbar hide */
 #header.hide {
     transform: translateY(-100%);
 }
 
-/* ========================
-   Nav link underline hover
-======================== */
+/* Nav link underline */
 .nav-link::after {
     content: "";
     position: absolute;
@@ -33,9 +26,7 @@
     width: 100%;
 }
 
-/* ========================
-   CTA Button shadow effect
-======================== */
+/* CTA button shadow */
 .cta-btn::after {
     content: "";
     position: absolute;
@@ -46,12 +37,9 @@
 }
 .cta-btn:hover::after {
     transform: translate(4px, 4px);
-    border-color: #ccc;
 }
 
-/* ========================
-   Moving BG text animations
-======================== */
+/* Moving BG text */
 .bg-line-left {
     animation: moveLeft 40s linear infinite;
 }
@@ -75,22 +63,11 @@
     }
 }
 
-/* ========================
-   Product scrollbar style
-======================== */
+/* Product scrollbar */
 .product-scroll::-webkit-scrollbar {
     height: 6px;
 }
 .product-scroll::-webkit-scrollbar-thumb {
     background: #ccc;
     border-radius: 10px;
-}
-
-/* ========================
-   Banner active state
-======================== */
-.banner-item.active {
-    opacity: 1 !important;
-    transform: scale(1) !important;
-    z-index: 1 !important;
 }

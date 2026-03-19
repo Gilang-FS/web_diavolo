@@ -13,7 +13,7 @@
                 <p class="text-white/60 text-xs tracking-[4px] uppercase font-montserrat mb-4">Perlengkapan Bela Diri</p>
                 <h1 class="font-bebas text-[80px] leading-[0.9] tracking-[2px] text-white mb-6">
                     KUALITAS<br>
-                    <span style="color:#E8FF00">PROFESIONAL</span><br>
+                    <span style="color:#CC0000">PROFESIONAL</span><br>
                     TANPA KOMPROMI
                 </h1>
                 <p class="text-white/70 text-base font-montserrat mb-8 max-w-sm leading-relaxed">
@@ -36,7 +36,7 @@
     <section class="reveal bg-black text-white py-12 px-20 border-t border-white/10">
         <div class="max-w-[1200px] mx-auto grid grid-cols-4 gap-8 divide-x divide-white/10">
             <div class="text-center px-8">
-                <p class="font-bebas text-5xl" style="color:#E8FF00">4+</p>
+                <p class="font-bebas text-5xl" style="color:#CC0000">4</p>
                 <p class="text-xs tracking-[3px] text-white/50 font-montserrat uppercase mt-1">Cabang Olahraga</p>
             </div>
             <div class="text-center px-8">
@@ -232,11 +232,11 @@
                     @php $products = [
                         ['img'=>'boxing/product1.png','price'=>'Rp 120.000','name'=>'WANNAFIT Helm Tinju | Boxing Helmet'],
                         ['img'=>'boxing/product2.png','price'=>'Rp 230.000','name'=>'WANNAFIT MAX Sarung Tinju 10oz 12oz | Boxing Gloves | Alat Olahraga Boxing '],
-                        ['img'=>'boxing/product3.png','price'=>'Rp 135.000','name'=>'Sembong Silat/dodot silat/kain samping'],
-                        ['img'=>'boxing/product4.png','price'=>'Rp 25.000','name'=>'Sabuk Silat/Sabuk Perguruan/Sabuk Perguruan/Sabuk Official'],
-                        ['img'=>'boxing/product5.png','price'=>'Rp 10.000','name'=>'SABUK PENCAK SILAT FULL KAIN POLOS LEBAR 5CM / SABUK BELADIRI / SABUK SILAT'],
-                        ['img'=>'boxing/product6.png','price'=>'Rp 120.000','name'=>'Sembong Seni Pencak Silat Batik Katun All Size'],
-                        ['img'=>'silat/product7.png','price'=>'Rp 35.000','name'=>'Jilbab Krudung Instan Pencak Silat Premium Tebal'],
+                        ['img'=>'boxing/product3.png','price'=>'Rp 15.000','name'=>'WANNAFIT Gum Shield | Gumshield Pelindung Mulut | Aksesoris Olahraga Boxing'],
+                        ['img'=>'boxing/product4.png','price'=>'Rp 160.000','name'=>'WANNAFIT Paket Samsak Tinju | Punching Bag | Alat Olahraga Boxing'],
+                        ['img'=>'boxing/product5.png','price'=>'Rp 50.000','name'=>'WANNAFIT Handwrap / Hand Wrap 3 Meter & 5 Meter | Aksesoris Olahraga'],
+                        ['img'=>'boxing/product6.png','price'=>'Rp 546.000','name'=>'Prikol Sepatu Tinju Pria Boxing Shoes Sport '],
+                        ['img'=>'boxing/product7.png','price'=>'Rp 180.000','name'=>'Baju Tanding Tinju Setelan Baju Boxing Setelan Singlet Tinju Warna Merah dan Biru Model N1ke Polos dan Costume'],
                     ]; @endphp
                     @foreach($products as $p)
                     <div class="flex-none w-[240px] cursor-pointer group">
@@ -270,7 +270,7 @@
                 <p class="text-[10px] tracking-[5px] text-white/40 font-montserrat uppercase mb-6">Brand Philosophy</p>
                 <h2 class="font-bebas leading-[0.9] tracking-[2px] mb-8" style="font-size:72px;">
                     BUILT FOR<br>
-                    <span style="color:#E8FF00">THOSE WHO</span><br>
+                    <span style="color:#CC0000">THOSE WHO</span><br>
                     NEVER STOP.
                 </h2>
                 <div class="w-12 h-[2px] bg-white/20 mb-8"></div>
@@ -279,7 +279,7 @@
                 </a>
             </div>
             <div class="space-y-8">
-                <div class="border-l-2 pl-6" style="border-color:#E8FF00">
+                <div class="border-l-2 pl-6" style="border-color:#CC0000">
                     <h4 class="font-montserrat font-bold text-sm tracking-widest uppercase mb-2">Kualitas Tanpa Kompromi</h4>
                     <p class="text-sm text-white/50 font-montserrat leading-relaxed">Setiap produk dirancang dengan standar profesional untuk mendukung performa terbaik kamu.</p>
                 </div>

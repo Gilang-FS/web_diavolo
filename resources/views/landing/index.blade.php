@@ -8,19 +8,19 @@
             <source src="{{ asset('videos/hero.mp4') }}" type="video/mp4">
         </video>
         <div class="absolute inset-0 z-[1]" style="background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.2) 60%,transparent 100%)"></div>
-        <div class="relative z-[2] w-full px-20 pb-20">
+        <div class="relative z-[2] w-full px-20 pb-24">
             <div class="max-w-2xl">
                 <p class="text-white/60 text-xs tracking-[4px] uppercase font-montserrat mb-4">Perlengkapan Bela Diri</p>
-                <h1 class="font-bebas text-[80px] leading-[0.9] tracking-[2px] text-white mb-6">
+                <h1 class="font-bebas text-[65px] leading-[0.9] tracking-[2px] text-white mb-6">
                     KUALITAS<br>
-                    <span style="color:#CC0000">PROFESIONAL</span><br>
+                    <span style="color:#f6e1c2e8">PROFESIONAL</span><br>
                     TANPA KOMPROMI
                 </h1>
-                <p class="text-white/70 text-base font-montserrat mb-8 max-w-sm leading-relaxed">
+                <p class="text-white/65 text-base font-montserrat mb-7 max-w-sm leading-relaxed">
                     Nyaman, aman, dan tahan lama — dirancang untuk mereka yang serius berlatih.
                 </p>
                 <div class="flex items-center gap-6">
-                    <button class="cta-btn relative px-8 py-4 bg-white text-black font-bold font-montserrat text-sm tracking-widest uppercase hover:bg-neutral-200 transition-colors duration-300 cursor-pointer border-none">
+                    <button class="cta-btn relative px-6 py-4 bg-white text-black font-bold font-montserrat text-sm tracking-widest uppercase hover:bg-neutral-200 transition-colors duration-300 cursor-pointer border-none">
                         BELANJA SEKARANG →
                     </button>
                 </div>
@@ -36,7 +36,7 @@
     <section class="reveal bg-black text-white py-12 px-20 border-t border-white/10">
         <div class="max-w-[1200px] mx-auto grid grid-cols-4 gap-8 divide-x divide-white/10">
             <div class="text-center px-8">
-                <p class="font-bebas text-5xl" style="color:#CC0000">4</p>
+                <p class="font-bebas text-5xl" style="color : #f6e1c2e8 ">4+</p>
                 <p class="text-xs tracking-[3px] text-white/50 font-montserrat uppercase mt-1">Cabang Olahraga</p>
             </div>
             <div class="text-center px-8">
@@ -62,7 +62,7 @@
 
         <div class="banner-item active absolute inset-0 transition-all duration-700" data-banner="taekwondo" style="opacity:1;transform:scale(1);z-index:1;">
             <div class="absolute inset-0 bg-black/50 z-[1]"></div>
-            <img src="/images/banner-taekwondo.jpg" alt="Taekwondo" class=" object-cover bg-[position:50%_70%] ">
+            <img src="/images/taekwondo/banner2.jpg" alt="Taekwondo"  class="w-full h-full object-cover" style="object-position: 90% 25%; scale:1.05;">
             <div class="absolute bottom-12 left-20 z-[2] text-white">
                 <p class="text-[10px] tracking-[5px] text-white/50 font-montserrat uppercase mb-2">01 / Taekwondo</p>
                 <h2 class="font-bebas text-[72px] leading-none tracking-[4px]">TAEKWONDO</h2>
@@ -72,7 +72,7 @@
 
         <div class="banner-item absolute inset-0 transition-all duration-700" data-banner="karate" style="opacity:0;transform:scale(1.05);z-index:0;">
             <div class="absolute inset-0 bg-black/50 z-[1]"></div>
-            <img src="/images/banner-karate.jpg" alt="Karate" class="w-full h-full object-cover">
+            <img src="/images/karate/banner.jpg" alt="Karate" class="w-full h-full object-cover" style="object-position: 10% 25%;">
             <div class="absolute bottom-12 left-20 z-[2] text-white">
                 <p class="text-[10px] tracking-[5px] text-white/50 font-montserrat uppercase mb-2">02 / Karate</p>
                 <h2 class="font-bebas text-[72px] leading-none tracking-[4px]">KARATE</h2>
@@ -82,7 +82,7 @@
 
         <div class="banner-item absolute inset-0 transition-all duration-700" data-banner="silat" style="opacity:0;transform:scale(1.05);z-index:0;">
             <div class="absolute inset-0 bg-black/50 z-[1]"></div>
-            <img src="/images/banner-silat.jpg" alt="Silat" class="w-full h-full object-cover">
+            <img src="/images/silat/banner.jpg" alt="Silat" class="w-full h-full object-cover" style="object-position: 30% 60%;">
             <div class="absolute bottom-12 left-20 z-[2] text-white">
                 <p class="text-[10px] tracking-[5px] text-white/50 font-montserrat uppercase mb-2">03 / Silat</p>
                 <h2 class="font-bebas text-[72px] leading-none tracking-[4px]">SILAT</h2>
@@ -92,7 +92,7 @@
 
         <div class="banner-item absolute inset-0 transition-all duration-700" data-banner="boxing" style="opacity:0;transform:scale(1.05);z-index:0;">
             <div class="absolute inset-0 bg-black/50 z-[1]"></div>
-            <img src="/images/banner-boxing.jpg" alt="Boxing" class="w-full h-full object-cover">
+            <img src="/images/boxing/banner.jpg" alt="Boxing" class="w-full h-full object-cover" style="object-position: 0% 20%; scale:1.05;">
             <div class="absolute bottom-12 left-20 z-[2] text-white">
                 <p class="text-[10px] tracking-[5px] text-white/50 font-montserrat uppercase mb-2">04 / Boxing</p>
                 <h2 class="font-bebas text-[72px] leading-none tracking-[4px]">BOXING</h2>
@@ -121,7 +121,7 @@
 
         <div class="relative flex gap-10 mb-10">
             <div class="category-indicator absolute bottom-0 h-[2px] bg-black transition-all duration-500 ease-out"></div>
-            <button class="category-tab active bg-transparent border-none text-sm tracking-[2px] font-montserrat cursor-pointer py-2 text-black uppercase" data-category="taekwondo">Taekwondo</button>
+            <button class="category-tab bg-transparent border-none text-sm tracking-[2px] font-montserrat cursor-pointer py-2 text-neutral-400 uppercase" data-category="taekwondo">Taekwondo</button>
             <button class="category-tab bg-transparent border-none text-sm tracking-[2px] font-montserrat cursor-pointer py-2 text-neutral-400 uppercase" data-category="karate">Karate</button>
             <button class="category-tab bg-transparent border-none text-sm tracking-[2px] font-montserrat cursor-pointer py-2 text-neutral-400 uppercase" data-category="silat">Silat</button>
             <button class="category-tab bg-transparent border-none text-sm tracking-[2px] font-montserrat cursor-pointer py-2 text-neutral-400 uppercase" data-category="boxing">Boxing</button>
@@ -138,7 +138,7 @@
                         ['img'=>'taekwondo/product4.png','price'=>'Rp 580.000','name'=>'DOBOK TAEKWONDO MOOTO MTX BASIC S2 BK NECK'],
                         ['img'=>'taekwondo/product5.png','price'=>'Rp 1.150.000','name'=>'Dobok Pugnator Elite Champions Strips Blue Quick Dry'],
                         ['img'=>'taekwondo/product6.png','price'=>'Rp 7.999','name'=>'Papan Demo Taekwondo Kayu Ringan 30x22,5 Cm'],
-                        ['img'=>'product7.png','price'=>'Rp 280.000','name'=>'Pelindung Kaki MTX ORIGINAL'],
+                        ['img'=>'taekwondo/product7.png','price'=>'Rp 280.000','name'=>'Pelindung Kaki MTX ORIGINAL'],
                     ]; @endphp
                     @foreach($products as $p)
                     <div class="flex-none w-[240px] cursor-pointer group">
@@ -270,7 +270,7 @@
                 <p class="text-[10px] tracking-[5px] text-white/40 font-montserrat uppercase mb-6">Brand Philosophy</p>
                 <h2 class="font-bebas leading-[0.9] tracking-[2px] mb-8" style="font-size:72px;">
                     BUILT FOR<br>
-                    <span style="color:#CC0000">THOSE WHO</span><br>
+                    <span style="color: #f6e1c2e8">THOSE WHO</span><br>
                     NEVER STOP.
                 </h2>
                 <div class="w-12 h-[2px] bg-white/20 mb-8"></div>
@@ -279,7 +279,7 @@
                 </a>
             </div>
             <div class="space-y-8">
-                <div class="border-l-2 pl-6" style="border-color:#CC0000">
+                <div class="border-l-2 pl-6" style="border-color : #f6e1c2e8">
                     <h4 class="font-montserrat font-bold text-sm tracking-widest uppercase mb-2">Kualitas Tanpa Kompromi</h4>
                     <p class="text-sm text-white/50 font-montserrat leading-relaxed">Setiap produk dirancang dengan standar profesional untuk mendukung performa terbaik kamu.</p>
                 </div>

@@ -110,48 +110,46 @@
     </section>
 
     {{-- PRODUCTS --}}
-    <section class="reveal px-20 pb-28 pt-16 bg-white">
+    <section class="reveal px-20 pb-16 pt-16 bg-white">
         <div class="flex justify-between items-end mb-10 border-b border-black/10 pb-6">
             <div>
                 <p class="text-[10px] tracking-[5px] text-black/40 font-montserrat uppercase mb-2">Koleksi Kami</p>
-                <h2 id="section-title" class="font-bebas text-5xl tracking-[3px] m-0">PRODUK TAEKWONDO</h2>
+                <h2 id="section-title" class="font-bebas text-5xl tracking-[3px] m-0">PRODUK {{ strtoupper($categories->first()->name ?? 'KAMI') }}</h2>
             </div>
-            <a href="#" class="text-xs font-montserrat tracking-widest uppercase text-black border-b border-black pb-1 hover:opacity-50 transition-opacity no-underline">Lihat Semua</a>
+            <a href="{{ route('products.index')}}" class="text-xs font-montserrat tracking-widest uppercase text-black border-b border-black pb-1 hover:opacity-50 transition-opacity no-underline">Lihat Semua</a>
         </div>
 
+        {{-- Category Tabs --}}
         <div class="relative flex gap-10 mb-10">
             <div class="category-indicator absolute bottom-0 h-[2px] bg-black transition-all duration-500 ease-out"></div>
-            <button class="category-tab bg-transparent border-none text-sm tracking-[2px] font-montserrat cursor-pointer py-2 text-neutral-400 uppercase" data-category="taekwondo">Taekwondo</button>
-            <button class="category-tab bg-transparent border-none text-sm tracking-[2px] font-montserrat cursor-pointer py-2 text-neutral-400 uppercase" data-category="karate">Karate</button>
-            <button class="category-tab bg-transparent border-none text-sm tracking-[2px] font-montserrat cursor-pointer py-2 text-neutral-400 uppercase" data-category="silat">Silat</button>
-            <button class="category-tab bg-transparent border-none text-sm tracking-[2px] font-montserrat cursor-pointer py-2 text-neutral-400 uppercase" data-category="boxing">Boxing</button>
+            @foreach($categories as $cat)
+                <button class="category-tab bg-transparent border-none text-sm tracking-[2px] font-montserrat cursor-pointer py-2 text-neutral-400 uppercase"
+                        data-category="{{ $cat->slug }}">{{ $cat->name }}</button>
+            @endforeach
         </div>
 
-        <div class="product-group active" id="taekwondo">
-            <div class="products-wrapper relative">
+        {{-- Product Groups --}}
+        @foreach($categories as $cat)
+        <div class="product-group {{ $loop->first ? 'active' : '' }}" id="{{ $cat->slug }}" @if(!$loop->first) style="display:none;" @endif>
+            <div class="products-wrapper relative overflow-hidden">
                 <button class="scroll-btn left absolute left-[-20px] top-[40%] -translate-y-1/2 bg-white text-black border border-black/10 w-11 h-11 rounded-full cursor-pointer text-base shadow-md hover:bg-black hover:text-white transition-all z-10">&#10094;</button>
                 <div class="product-scroll flex gap-6 overflow-x-auto pb-3" style="scrollbar-width:thin;scrollbar-color:#e5e5e5 transparent;">
-                    @php $products = [
-                        ['img'=>'taekwondo/product1.png','price'=>'Rp 750.000','name'=>'DOBOK POOMSAE PUGNATOR JUNIOR SENIOR TAEKWONDO'],
-                        ['img'=>'taekwondo/product2.png','price'=>'Rp 900.000','name'=>'DOBOK TKS Taekwondo Kyurugi Olympic Series T-ONE'],
-                        ['img'=>'taekwondo/product3.png','price'=>'Rp 900.000','name'=>'Dobok Star Olympic Pro Kuat Dan Nyaman'],
-                        ['img'=>'taekwondo/product4.png','price'=>'Rp 580.000','name'=>'DOBOK TAEKWONDO MOOTO MTX BASIC S2 BK NECK'],
-                        ['img'=>'taekwondo/product5.png','price'=>'Rp 1.150.000','name'=>'Dobok Pugnator Elite Champions Strips Blue Quick Dry'],
-                        ['img'=>'taekwondo/product6.png','price'=>'Rp 7.999','name'=>'Papan Demo Taekwondo Kayu Ringan 30x22,5 Cm'],
-                        ['img'=>'taekwondo/product7.png','price'=>'Rp 280.000','name'=>'Pelindung Kaki MTX ORIGINAL'],
-                    ]; @endphp
-                    @foreach($products as $p)
+                    @foreach($productsByCategory[$cat->slug] ?? [] as $product)
                     <div class="flex-none w-[240px] cursor-pointer group">
                         <div class="w-full h-[280px] bg-neutral-50 overflow-hidden relative">
-                            <img src="/images/{{ $p['img'] }}" alt="{{ $p['name'] }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <img src="/images/{{ $product->image }}" alt="{{ $product->name }}"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs tracking-widest text-center py-3 font-montserrat uppercase translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                                 + Tambah ke Keranjang
                             </div>
                         </div>
                         <div class="mt-3 px-1">
-                            <h3 class="text-xs font-montserrat font-semibold leading-snug overflow-hidden mb-1" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{{ $p['name'] }}</h3>
-                            <p class="text-sm font-bold tracking-wider">{{ $p['price'] }}</p>
-                            <p class="text-[10px] text-neutral-400 font-montserrat mt-1 tracking-wider">Terjual 0</p>
+                            <h3 class="text-xs font-montserrat font-semibold leading-snug overflow-hidden mb-1"
+                                style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">
+                                {{ $product->name }}
+                            </h3>
+                            <p class="text-sm font-bold tracking-wider">{{ $product->formatted_price }}</p>
+                            <p class="text-[10px] text-neutral-400 font-montserrat mt-1 tracking-wider">Terjual {{ $product->sold }}</p>
                         </div>
                     </div>
                     @endforeach
@@ -159,105 +157,7 @@
                 <button class="scroll-btn right absolute right-[-20px] top-[40%] -translate-y-1/2 bg-white text-black border border-black/10 w-11 h-11 rounded-full cursor-pointer text-base shadow-md hover:bg-black hover:text-white transition-all z-10">&#10095;</button>
             </div>
         </div>
-
-        <div class="product-group" id="karate" style="display:none;">
-            <div class="products-wrapper relative">
-                <button class="scroll-btn left absolute left-[-20px] top-[40%] -translate-y-1/2 bg-white text-black border border-black/10 w-11 h-11 rounded-full cursor-pointer text-base shadow-md hover:bg-black hover:text-white transition-all z-10">&#10094;</button>
-                <div class="product-scroll flex gap-6 overflow-x-auto pb-3" style="scrollbar-width:thin;scrollbar-color:#e5e5e5 transparent;">
-                    @php $products = [
-                        ['img'=>'karate/product1.png','price'=>'Rp 151.000','name'=>'Baju Karate Senkaido Untuk Pemula Anak s/d Dewasa'],
-                        ['img'=>'karate/product2.png','price'=>'Rp 208.000','name'=>'SENKAIDO FACE MASK KARATE'],
-                        ['img'=>'karate/product3.png','price'=>'Rp 17.000','name'=>'Senkaido Sabuk Karate Pemula Bahan Dril 2,7m'],
-                        ['img'=>'karate/product4.png','price'=>'Rp 194.000','name'=>'SENKAIDO BODY PROTECTOR Model Kaos'],
-                        ['img'=>'karate/product5.png','price'=>'Rp 215.000','name'=>'Muvon Body Protector Karate Expert Series - Fit To Body'],
-                        ['img'=>'karate/product6.png','price'=>'Rp 270.000','name'=>'SENKAIDO FOOT PROTECTOR'],
-                        ['img'=>'karate/product7.png','price'=>'Rp 110.000','name'=>'Hand Protector Karate MUVON BASIC SERIES'],
-                    ]; @endphp
-                    @foreach($products as $p)
-                    <div class="flex-none w-[240px] cursor-pointer group">
-                        <div class="w-full h-[280px] bg-neutral-50 overflow-hidden relative">
-                            <img src="/images/{{ $p['img'] }}" alt="{{ $p['name'] }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs tracking-widest text-center py-3 font-montserrat uppercase translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                                + Tambah ke Keranjang
-                            </div>
-                        </div>
-                        <div class="mt-3 px-1">
-                            <h3 class="text-xs font-montserrat font-semibold leading-snug overflow-hidden mb-1" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{{ $p['name'] }}</h3>
-                            <p class="text-sm font-bold tracking-wider">{{ $p['price'] }}</p>
-                            <p class="text-[10px] text-neutral-400 font-montserrat mt-1 tracking-wider">Terjual 0</p>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <button class="scroll-btn right absolute right-[-20px] top-[40%] -translate-y-1/2 bg-white text-black border border-black/10 w-11 h-11 rounded-full cursor-pointer text-base shadow-md hover:bg-black hover:text-white transition-all z-10">&#10095;</button>
-            </div>
-        </div>
-        <div class="product-group" id="silat" style="display:none;">
-            <div class="products-wrapper relative">
-                <button class="scroll-btn left absolute left-[-20px] top-[40%] -translate-y-1/2 bg-white text-black border border-black/10 w-11 h-11 rounded-full cursor-pointer text-base shadow-md hover:bg-black hover:text-white transition-all z-10">&#10094;</button>
-                <div class="product-scroll flex gap-6 overflow-x-auto pb-3" style="scrollbar-width:thin;scrollbar-color:#e5e5e5 transparent;">
-                    @php $products = [
-                        ['img'=>'silat/product1.png','price'=>'Rp 105.000','name'=>'Seragam Siswa Pencak Silat Pagar Nusa Bahan Outdoor Kuat'],
-                        ['img'=>'silat/product2.png','price'=>'Rp 120.000','name'=>'Sembong Silat/dodot silat/kain samping PREMIUM seni pencak silat'],
-                        ['img'=>'silat/product3.png','price'=>'Rp 135.000','name'=>'Sembong Silat/dodot silat/kain samping'],
-                        ['img'=>'silat/product4.png','price'=>'Rp 25.000','name'=>'Sabuk Silat/Sabuk Perguruan/Sabuk Perguruan/Sabuk Official'],
-                        ['img'=>'silat/product5.png','price'=>'Rp 10.000','name'=>'SABUK PENCAK SILAT FULL KAIN POLOS LEBAR 5CM / SABUK BELADIRI / SABUK SILAT'],
-                        ['img'=>'silat/product6.png','price'=>'Rp 120.000','name'=>'Sembong Seni Pencak Silat Batik Katun All Size'],
-                        ['img'=>'silat/product7.png','price'=>'Rp 35.000','name'=>'Jilbab Krudung Instan Pencak Silat Premium Tebal'],
-                    ]; @endphp
-                    @foreach($products as $p)
-                    <div class="flex-none w-[240px] cursor-pointer group">
-                        <div class="w-full h-[280px] bg-neutral-50 overflow-hidden relative">
-                            <img src="/images/{{ $p['img'] }}" alt="{{ $p['name'] }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs tracking-widest text-center py-3 font-montserrat uppercase translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                                + Tambah ke Keranjang
-                            </div>
-                        </div>
-                        <div class="mt-3 px-1">
-                            <h3 class="text-xs font-montserrat font-semibold leading-snug overflow-hidden mb-1" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{{ $p['name'] }}</h3>
-                            <p class="text-sm font-bold tracking-wider">{{ $p['price'] }}</p>
-                            <p class="text-[10px] text-neutral-400 font-montserrat mt-1 tracking-wider">Terjual 0</p>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <button class="scroll-btn right absolute right-[-20px] top-[40%] -translate-y-1/2 bg-white text-black border border-black/10 w-11 h-11 rounded-full cursor-pointer text-base shadow-md hover:bg-black hover:text-white transition-all z-10">&#10095;</button>
-            </div>
-
-        </div>
-        <div class="product-group" id="boxing" style="display:none;">
-            <div class="products-wrapper relative">
-                <button class="scroll-btn left absolute left-[-20px] top-[40%] -translate-y-1/2 bg-white text-black border border-black/10 w-11 h-11 rounded-full cursor-pointer text-base shadow-md hover:bg-black hover:text-white transition-all z-10">&#10094;</button>
-                <div class="product-scroll flex gap-6 overflow-x-auto pb-3" style="scrollbar-width:thin;scrollbar-color:#e5e5e5 transparent;">
-                    @php $products = [
-                        ['img'=>'boxing/product1.png','price'=>'Rp 120.000','name'=>'WANNAFIT Helm Tinju | Boxing Helmet'],
-                        ['img'=>'boxing/product2.png','price'=>'Rp 230.000','name'=>'WANNAFIT MAX Sarung Tinju 10oz 12oz | Boxing Gloves | Alat Olahraga Boxing '],
-                        ['img'=>'boxing/product3.png','price'=>'Rp 15.000','name'=>'WANNAFIT Gum Shield | Gumshield Pelindung Mulut | Aksesoris Olahraga Boxing'],
-                        ['img'=>'boxing/product4.png','price'=>'Rp 160.000','name'=>'WANNAFIT Paket Samsak Tinju | Punching Bag | Alat Olahraga Boxing'],
-                        ['img'=>'boxing/product5.png','price'=>'Rp 50.000','name'=>'WANNAFIT Handwrap / Hand Wrap 3 Meter & 5 Meter | Aksesoris Olahraga'],
-                        ['img'=>'boxing/product6.png','price'=>'Rp 546.000','name'=>'Prikol Sepatu Tinju Pria Boxing Shoes Sport '],
-                        ['img'=>'boxing/product7.png','price'=>'Rp 180.000','name'=>'Baju Tanding Tinju Setelan Baju Boxing Setelan Singlet Tinju Warna Merah dan Biru Model N1ke Polos dan Costume'],
-                    ]; @endphp
-                    @foreach($products as $p)
-                    <div class="flex-none w-[240px] cursor-pointer group">
-                        <div class="w-full h-[280px] bg-neutral-50 overflow-hidden relative">
-                            <img src="/images/{{ $p['img'] }}" alt="{{ $p['name'] }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs tracking-widest text-center py-3 font-montserrat uppercase translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                                + Tambah ke Keranjang
-                            </div>
-                        </div>
-                        <div class="mt-3 px-1">
-                            <h3 class="text-xs font-montserrat font-semibold leading-snug overflow-hidden mb-1" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{{ $p['name'] }}</h3>
-                            <p class="text-sm font-bold tracking-wider">{{ $p['price'] }}</p>
-                            <p class="text-[10px] text-neutral-400 font-montserrat mt-1 tracking-wider">Terjual 0</p>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <button class="scroll-btn right absolute right-[-20px] top-[40%] -translate-y-1/2 bg-white text-black border border-black/10 w-11 h-11 rounded-full cursor-pointer text-base shadow-md hover:bg-black hover:text-white transition-all z-10">&#10095;</button>
-            </div>
-
-        </div>
+        @endforeach
     </section>
 
     {{-- BRAND STATEMENT (pengganti manifesto) --}}

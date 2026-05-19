@@ -10,15 +10,15 @@
 
         {{-- Logo --}}
         <div>
-            <a href="#" class="font-bebas text-2xl tracking-[3px] text-black no-underline hover:opacity-70 transition-opacity">
+            <a href="{{ url('/') }}" class="font-bebas text-2xl tracking-[3px] text-black no-underline hover:opacity-70 transition-opacity">
                 Diavolo Apparel
             </a>
         </div>
 
         {{-- Nav Links --}}
         <ul class="flex list-none gap-16 m-0 p-0">
-            <li><a href="#" class="nav-link text-black font-montserrat text-sm tracking-wider opacity-85 no-underline relative hover:opacity-100">Beranda</a></li>
-            <li><a href="#" class="nav-link text-black font-montserrat text-sm tracking-wider opacity-85 no-underline relative hover:opacity-100">Produk</a></li>
+            <li><a href="{{ url('/')}}" class="nav-link text-black font-montserrat text-sm tracking-wider opacity-85 no-underline relative hover:opacity-100">Beranda</a></li>
+            <li><a href="{{ route('products.index')}}" class="nav-link text-black font-montserrat text-sm tracking-wider opacity-85 no-underline relative hover:opacity-100">Produk</a></li>
             <li><a href="#" class="nav-link text-black font-montserrat text-sm tracking-wider opacity-85 no-underline relative hover:opacity-100">Kontak</a></li>
             <li><a href="#" class="nav-link text-black font-montserrat text-sm tracking-wider opacity-85 no-underline relative hover:opacity-100">Tentang Kami</a></li>
         </ul>

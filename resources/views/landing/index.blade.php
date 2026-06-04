@@ -140,7 +140,7 @@
                             <img src="/images/{{ $product->image }}" alt="{{ $product->name }}"
                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs tracking-widest text-center py-3 font-montserrat uppercase translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                                + Tambah ke Keranjang
+                                <a href="{{ route('login') }}" class="text-white no-underline">Tambah ke Keranjang</a>
                             </div>
                         </div>
                         <div class="mt-3 px-1">
@@ -193,6 +193,17 @@
                 </div>
             </div>
         </div>
+
+        @if(session('status'))
+        <div class="fixed top-24 left-1/2 -translate-x-1/2 z-[9999] bg-black text-white font-montserrat text-sm px-6 py-3 shadow-lg flex items-center gap-3"
+            id="status-alert">
+            <i class="fas fa-check-circle text-green-400"></i>
+            {{ session('status') }}
+            <button onclick="document.getElementById('status-alert').remove()" class="ml-4 text-gray-400 hover:text-white">
+                <i class="fas fa-times text-xs"></i>
+            </button>
+        </div>
+        @endif
     </section>
 
 @endsection

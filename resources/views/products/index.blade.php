@@ -100,10 +100,10 @@
 
     <div class="grid grid-cols-4 gap-6">
         @foreach($products as $product)
-        <div class="group relative bg-white border border-gray-100 hover:border-black transition-all duration-300 hover:shadow-lg">
+        <div class="group relative bg-white border border-gray-100 hover:border-black transition-all duration-300 hover:shadow-lg flex flex-col">
 
             {{-- Gambar Produk --}}
-            <a href="{{ route('products.show', $product->slug) }}" class="block overflow-hidden relative">
+            <a href="{{ auth()->check() ? route('products.show', $product->slug) : route('login') }}"class="block overflow-hidden relative">
                 <div class="aspect-square overflow-hidden bg-gray-50">
                     <img
                         src="{{ asset('images/' . $product->image) }}"
@@ -127,14 +127,14 @@
             </a>
 
             {{-- Info Produk --}}
-            <div class="p-4">
+            <div class="p-4 flex flex-col flex-1">
                 <a href="{{ route('products.show', $product->slug) }}" class="no-underline">
                     <h3 class="font-montserrat text-sm font-semibold text-black leading-snug mb-2 line-clamp-2 group-hover:opacity-70 transition-opacity">
                         {{ $product->name }}
                     </h3>
                 </a>
 
-                <div class="flex items-center justify-between mt-3">
+                <div class="flex items-center justify-between mt-auto pt-3">
                     <div>
                         {{-- Harga --}}
                         @if($product->discount_price)
@@ -161,17 +161,26 @@
 
                 {{-- Tombol Tambah ke Keranjang --}}
                 @if($product->stock > 0)
-                <form method="POST" action="/cart/add" class="mt-3">
+                @auth
+                <form method="POST" action="{{ route('cart.add') }}" class="mt-3">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                     <input type="hidden" name="quantity" value="1">
                     <button type="submit"
                         class="w-full py-2 bg-black text-white text-xs font-montserrat font-semibold tracking-wider
-                               hover:bg-neutral-800 transition-all duration-200 flex items-center justify-center gap-2">
+                            hover:bg-neutral-800 transition-all duration-200 flex items-center justify-center gap-2">
                         <i class="fas fa-shopping-bag text-xs"></i>
                         Tambah ke Keranjang
                     </button>
                 </form>
+                @else
+                <a href="{{ route('login') }}"
+                class="mt-3 w-full py-2 bg-black text-white text-xs font-montserrat font-semibold tracking-wider
+                        hover:bg-neutral-800 transition-all duration-200 flex items-center justify-center gap-2">
+                    <i class="fas fa-shopping-bag text-xs"></i>
+                    Tambah ke Keranjang
+                </a>
+                @endauth
                 @else
                 <button disabled
                     class="mt-3 w-full py-2 bg-gray-200 text-gray-400 text-xs font-montserrat font-semibold tracking-wider cursor-not-allowed">

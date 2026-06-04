@@ -21,12 +21,12 @@ class ProductSeeder extends Seeder
 
         $data = [
             'taekwondo' => [
-                ['name'=>'DOBOK POOMSAE PUGNATOR JUNIOR SENIOR TAEKWONDO','price'=>750000,'image'=>'taekwondo/product1.png','stock'=>50],
-                ['name'=>'DOBOK TKS Taekwondo Kyurugi Olympic Series T-ONE','price'=>900000,'image'=>'taekwondo/product2.png','stock'=>30],
-                ['name'=>'Dobok Star Olympic Pro Kuat Dan Nyaman','price'=>900000,'image'=>'taekwondo/product3.png','stock'=>25],
-                ['name'=>'DOBOK TAEKWONDO MOOTO MTX BASIC S2 BK NECK','price'=>580000,'image'=>'taekwondo/product4.png','stock'=>40],
-                ['name'=>'Dobok Pugnator Elite Champions Strips Blue Quick Dry','price'=>1150000,'image'=>'taekwondo/product5.png','stock'=>20],
-                ['name'=>'Papan Demo Taekwondo Kayu Ringan 30x22,5 Cm','price'=>7999,'image'=>'taekwondo/product6.png','stock'=>100, 'sizes' => []],
+                ['name'=>'DOBOK POOMSAE PUGNATOR JUNIOR SENIOR TAEKWONDO','price'=>750000,'image'=>'taekwondo/product1.png','stock'=>100, 'sizes' => ['160', '170', '180', '190', '200']],
+                ['name'=>'DOBOK TKS Taekwondo Kyurugi Olympic Series T-ONE','price'=>900000,'image'=>'taekwondo/product2.png','stock'=>30, 'sizes' => ['160', '170', '180', '190', '200']],
+                ['name'=>'Dobok Star Olympic Pro Kuat Dan Nyaman','price'=>900000,'image'=>'taekwondo/product3.png','stock'=>25, 'sizes' => ['160', '170', '180', '190', '200']],
+                ['name'=>'DOBOK TAEKWONDO MOOTO MTX BASIC S2 BK NECK','price'=>580000,'image'=>'taekwondo/product4.png','stock'=>40, 'sizes' => ['160', '170', '180', '190', '200']],
+                ['name'=>'Dobok Pugnator Elite Champions Strips Blue Quick Dry','price'=>1150000,'image'=>'taekwondo/product5.png','stock'=>20, 'sizes' => ['160', '170', '180', '190', '200']],
+                ['name'=>'Papan Demo Taekwondo Kayu Ringan 30x22,5 Cm','price'=>7999,'image'=>'taekwondo/product6.png','stock'=>1<Paste>, 'sizes' => []],
                 ['name'=>'Pelindung Kaki MTX ORIGINAL','price'=>280000,'image'=>'taekwondo/product7.png','stock'=>60],
             ],
             'karate' => [

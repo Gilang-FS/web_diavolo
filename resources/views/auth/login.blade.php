@@ -6,6 +6,13 @@
     </div>
 
     <form method="POST" action="{{ route('login') }}" class="space-y-6">
+
+        @if(session('url.intended'))
+            <div class="mb-4 px-5 py-3 bg-yellow-50 border border-yellow-200 font-montserrat text-sm text-yellow-700 flex items-center gap-2">
+                <i class="fas fa-exclamation-triangle"></i>
+                Silakan login terlebih dahulu untuk melanjutkan belanja.
+            </div>
+        @endif
         @csrf
 
         <div>

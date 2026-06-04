@@ -144,7 +144,7 @@
 
     {{-- Quantity & Tombol --}}
     @if($product->stock > 0)
-    <form method="POST" action="/cart/add" id="cart-form">
+    <form method="POST" action="{{ route('cart.add') }}" id="cart-form">
         @csrf
         <input type="hidden" name="product_id" value="{{ $product->id }}">
         <input type="hidden" name="size" id="selected-size" value="">

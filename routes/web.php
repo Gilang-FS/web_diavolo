@@ -47,6 +47,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/addresses/{address}', [App\Http\Controllers\AddressController::class, 'update'])->name('addresses.update');
     Route::delete('/addresses/{address}', [App\Http\Controllers\AddressController::class, 'destroy'])->name('addresses.destroy');
     Route::patch('/addresses/{address}/default', [App\Http\Controllers\AddressController::class, 'setDefault'])->name('addresses.default');
+    // Order routes
+    Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
 });
 
 require __DIR__.'/auth.php';

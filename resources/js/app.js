@@ -45,21 +45,67 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ========================
-// BANNER — ganti saat klik kategori
+// BANNER — ganti saat klik kategori + dots + auto slide
 // ========================
-const banners = document.querySelectorAll(".banner-item");
-const categoryTabs = document.querySelectorAll(".category-tab");
+document.addEventListener("DOMContentLoaded", () => {
+    const banners = document.querySelectorAll(".banner-item");
+    const categoryTabs = document.querySelectorAll(".category-tab");
+    const dots = document.querySelectorAll(".banner-dot");
+    const categories = ["taekwondo", "karate", "silat", "boxing"];
+    let current = 0;
+    let autoSlide;
 
-categoryTabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-        const category = tab.dataset.category;
+    function switchBanner(category) {
+        const index = categories.indexOf(category);
+        if (index === -1) return;
+        current = index;
+
+        // Update banner
         banners.forEach((banner) => {
             const isActive = banner.dataset.banner === category;
             banner.style.opacity = isActive ? "1" : "0";
             banner.style.transform = isActive ? "scale(1)" : "scale(1.05)";
             banner.style.zIndex = isActive ? "1" : "0";
         });
+
+        // Update dots
+        dots.forEach((dot) => {
+            const isActive = dot.dataset.banner === category;
+            dot.style.width = isActive ? "32px" : "16px";
+            dot.style.background = isActive ? "white" : "rgba(255,255,255,0.3)";
+        });
+    }
+
+    // Klik category tabs
+    categoryTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            switchBanner(tab.dataset.category);
+            resetAutoSlide();
+        });
     });
+
+    // Klik dots
+    dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+            switchBanner(dot.dataset.banner);
+            resetAutoSlide();
+        });
+    });
+
+    // Auto slide setiap 4 detik
+    function startAutoSlide() {
+        autoSlide = setInterval(() => {
+            const next = categories[(current + 1) % categories.length];
+            switchBanner(next);
+        }, 4000);
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlide);
+        startAutoSlide();
+    }
+
+    startAutoSlide();
 });
 
 // ========================

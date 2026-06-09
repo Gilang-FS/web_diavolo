@@ -20,9 +20,11 @@
                     Nyaman, aman, dan tahan lama — dirancang untuk mereka yang serius berlatih.
                 </p>
                 <div class="flex items-center gap-6">
-                    <button class="cta-btn relative px-6 py-4 bg-white text-black font-bold font-montserrat text-sm tracking-widest uppercase hover:bg-neutral-200 transition-colors duration-300 cursor-pointer border-none">
-                        BELANJA SEKARANG →
-                    </button>
+                    <a href="{{ auth()->check() ? route('products.index') : route('login') }}" class="no-underline">
+                        <button class="cta-btn relative px-6 py-4 bg-white text-black font-bold font-montserrat text-sm tracking-widest uppercase hover:bg-neutral-200 transition-colors duration-300 cursor-pointer border-none">
+                            BELANJA SEKARANG →
+                        </button>
+                    </a>
                 </div>
             </div>
             <div class="absolute bottom-8 right-20 flex flex-col items-center gap-2 opacity-40">

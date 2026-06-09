@@ -8,7 +8,7 @@
     <h1 class="font-bebas text-4xl tracking-[4px]">Checkout</h1>
 </section>
 
-<section class="px-20 py-8 bg-gray-50 min-h-screen">
+<section class="px-20 py-8 bg-gray-50 min-h-screen relative">
     <form method="POST" action="{{ route('checkout.process') }}" id="checkout-form">
         @csrf
         <div class="flex gap-6">
@@ -155,7 +155,7 @@
 
             {{-- KOLOM KANAN: Ringkasan --}}
             <div class="w-80 flex-shrink-0">
-                <div class="bg-white border border-gray-200 p-6 fixed top-24">
+                <div class="bg-white border border-gray-200 p-6 sticky">
                     <h2 class="font-bebas text-xl tracking-wider mb-4 pb-3 border-b border-gray-100">Ringkasan Belanja</h2>
 
                     <div class="space-y-3 mb-4">
